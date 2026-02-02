@@ -848,21 +848,9 @@ button{font:inherit}
 .implant{
   position: relative;
   padding: 84px 0 72px;
-  background: #0e5f33;
+  background:url("../img/se4_bg.png") no-repeat center/cover;
   color: #fff;
   overflow: hidden;
-}
-
-/* 배경 패턴 느낌(이미지의 사선) */
-.implant__bg{
-  position:absolute;
-  inset:-120px -120px -120px -120px;
-  background:
-    radial-gradient(1200px 520px at 20% 30%, rgba(255,255,255,.12), transparent 60%),
-    linear-gradient(135deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 42%),
-    linear-gradient(315deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 42%);
-  opacity: .55;
-  pointer-events:none;
 }
 
 .implant__head{
@@ -911,68 +899,88 @@ button{font:inherit}
 
 /* 카드 */
 .icard{
-  width: min(720px, 100%);
+  width: min(760px, calc(100% - 48px));
   margin: 0 auto;
+
   background: #fff;
-  color: #1b1b1b;
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  align-items: stretch;
-  box-shadow: 0 18px 44px rgba(0,0,0,.18);
+ display: grid;
+  grid-template-columns: 1fr 1fr;   /* 이미지 / 텍스트 반반 */
+  align-items: center;
+
+  padding: 28px;                   /* ✅ 카드 내부 여백 */
+  gap: 28px;
+
+  /* 테두리/그림자 최소 (캡처처럼 깔끔) */
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+  
 }
 
 /* 왼쪽 이미지 */
 .icard__media{
   position: relative;
-  background: #f2f2f2;
+  background: #fff;
+  height: 300px; 
+  overflow: hidden;
+   height: 100%;
+  padding: 14px;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 .icard__media img{
   width: 100%;
   height: 100%;
   object-fit: cover;
   display:block;
-}
-.icard__media .media__placeholder{
-  min-height: 180px;
+  border-radius: 16px;  
 }
 
-/* 오른쪽 텍스트 */
-.icard__body{
-  padding: 26px 26px 24px;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
+
+.icard__head{
+  align-items: center;
+  gap: 12px;              /* 숫자와 라벨 사이 간격 */
+  margin-bottom: 30px;
+  display: flex;
+
 }
 
 .icard__no{
-  font-size: 18px;
-  font-weight: 900;
-  color: rgba(27,27,27,.55);
-  letter-spacing: .06em;
+  font-size: 50px;                 /* ⬅ 크게 */
+  font-weight: 700;
+  color:#A98E6C;           /* 베이지 */
+  letter-spacing: .04em;
+  line-height: 1;
+  margin: 0 0 6px;
 }
 
-.icard__pill{
-  display:inline-flex;
-  align-items:center;
-  width: fit-content;
-  padding: 6px 10px;
+
+.icard__label{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 16px;
   border-radius: 999px;
-  background: #0e6230;
-  color:#fff;
-  font-size: 12px;
-  font-weight: 800;
+  background: var(--c-green);
+  color: #fff;
+
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .icard__desc{
-  margin: 2px 0 0;
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(27,27,27,.82);
-  word-break: keep-all;
-  overflow-wrap: break-word;
+   margin: 0;
+  color: rgba(27,27,27,.72);
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: -0.02em;
+
 }
 
 /* 좌우 버튼(섹션 좌우에 크게) */
