@@ -213,10 +213,7 @@
     </div>
   </div>
 
-  <!-- ✅ 슬라이드 프레임(1920까지) -->
-  <div class="doctorsFrame">
-    <!-- 우측 워터마크(로고 패턴) -->
-    <div class="doctors__wm" aria-hidden="true"></div>
+  <div class="doctorsFrame doctorsFrame--bg">
 
     <div class="swiper doctorsSwiper">
       <div class="swiper-wrapper">
@@ -232,7 +229,6 @@
             <div class="dcard__grid">
               <div class="dcard__photo">
                 <img src="./img/doctor-1.jpg" alt="의료진 사진" onerror="this.style.display='none'">
-                <div class="media__placeholder" aria-hidden="true">의료진 사진</div>
               </div>
 
               <div class="dcard__spec">
@@ -283,7 +279,6 @@
             <div class="dcard__grid">
               <div class="dcard__photo">
                 <img src="./img/doctor-2.jpg" alt="의료진 사진" onerror="this.style.display='none'">
-                <div class="media__placeholder" aria-hidden="true">의료진 사진</div>
               </div>
 
               <div class="dcard__spec">
@@ -311,8 +306,8 @@
 
       </div>
 
-       <button class="doctorsPrev" type="button" aria-label="이전">‹</button>
-  <button class="doctorsNext" type="button" aria-label="다음">›</button>
+      <button class="doctorsPrev" type="button" aria-label="이전">‹</button>
+      <button class="doctorsNext" type="button" aria-label="다음">›</button>
 
   <div class="swiper-pagination"></div>
   </div>
@@ -550,47 +545,205 @@
       </div>
     </section>
 
-    <!-- 8) 오시는길 -->
-    <section class="section location" id="location">
-      <div class="container">
-        <div class="section__head">
-          <p class="section__eyebrow">Seoul Sion Dental Clinic</p>
-          <h2 class="section__title">오시는길</h2>
-        </div>
+    </main>
 
-        <div class="location__grid">
-          <div class="location__info card">
-            <h3>서울시온치과</h3>
-            <p>경남 창원시 마산회원구 3·15대로 624</p>
-            <p>롯데마트 인근 (주차/안내 문구는 실제 정보로 교체)</p>
+<!-- 8) 오시는길 -->
+<section class="section location" id="location" aria-label="오시는길">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <p class="section__eyebrow">Seoul Sion Dental Clinic</p>
+      <h2 class="section__title">오시는길</h2>
+    </div>
 
-            <p class="location__tel">055.715.2275</p>
-            <p class="section__sub">진료시간: 평일 09:30–19:00 / 토요일 진료</p>
+    <div class="location__grid">
+      <!-- LEFT: INFO CARD -->
+      <div class="location__info card">
+        <h3 class="location__name">서울시온치과의원</h3>
+
+        <dl class="location__dl">
+          <div class="location__row">
+            <dt>주소</dt>
+            <dd>
+              경남 창원시 마산회원구 (상세주소 입력)<br />
+              <span class="location__hint">건물/층수, 주차 안내 문구 추가 가능</span>
+            </dd>
           </div>
 
-          <div class="map card">
-            <div class="media__placeholder" aria-hidden="true">지도 영역</div>
+          <div class="location__row">
+            <dt>전화</dt>
+            <dd>
+              <a class="location__tel" href="tel:055-715-2275">055.715.2275</a>
+              <span class="location__hint">진료 중에는 통화가 늦어질 수 있어요</span>
+            </dd>
+          </div>
+
+          <div class="location__row">
+            <dt>진료시간</dt>
+            <dd class="hours">
+              <div class="hours__line">
+                <span>평일</span>
+                <strong>09:30 ~ 19:00</strong>
+              </div>
+              <div class="hours__line">
+                <span>토요일</span>
+                <strong>09:30 ~ 14:00</strong>
+              </div>
+              <div class="hours__line hours__line--muted">
+                <span>점심시간</span>
+                <strong>13:00 ~ 14:00</strong>
+              </div>
+              <div class="hours__note">※ 일요일/공휴일 휴진 (변동 시 공지)</div>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+
+<aside class="locationQuick" aria-label="빠른 메뉴">
+  <div class="locationQuick__pill">
+    <a class="locationQuick__item" href="tel:055-715-2275" aria-label="상담문의">
+      <span class="locationQuick__icon" aria-hidden="true">
+        <img src="./img/quick_01.png" alt="">
+      </span>
+      <span class="locationQuick__text">상담문의</span>
+    </a>
+
+    <a class="locationQuick__item" href="#about" aria-label="둘러보기">
+      <span class="locationQuick__icon" aria-hidden="true">
+        <img src="./img/quick_02.png" alt="">
+      </span>
+      <span class="locationQuick__text">둘러보기</span>
+    </a>
+
+    <a class="locationQuick__item" href="#location" aria-label="오시는길">
+      <span class="locationQuick__icon" aria-hidden="true">
+        <img src="./img/quick_03.png" alt="">
+      </span>
+      <span class="locationQuick__text">오시는길</span>
+    </a>
+  </div>
+
+  <button class="locationQuick__top" type="button" aria-label="맨 위로">
+    <span aria-hidden="true">
+      <img src="./img/quick_04.png" alt="">
+    </span>
+  </button>
+</aside>
+
+
+
+      <!-- RIGHT: MAP CARD -->
+      <div class="location__mapWrap card" aria-label="지도">
+        <div class="kakaoEmbed">
+          <a
+            class="kakaoEmbed__link"
+            href="https://map.kakao.com/?urlX=858640.0000000498&urlY=484101.00000000093&itemId=307584620&q=%EC%84%9C%EC%9A%B8%EC%8B%9C%EC%98%A8%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90&srcid=307584620&map_type=TYPE_MAP&from=roughmap"
+            target="_blank"
+            rel="noopener"
+            aria-label="카카오맵에서 서울시온치과의원 위치 보기"
+          >
+            <img
+              src="https://t1.daumcdn.net/roughmap/imgmap/2bdfcb58a13079942e9b24433a39f77243779be656badabf384d3299db50cf51"
+              alt="서울시온치과의원 카카오맵"
+            />
+          </a>
+
+          <div class="kakaoEmbed__bar">
+            <a class="kakaoEmbed__logo" href="https://map.kakao.com" target="_blank" rel="noopener">
+              <img src="https://t1.daumcdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png" alt="카카오맵" />
+            </a>
+
+            <div class="kakaoEmbed__actions">
+              <a target="_blank" rel="noopener"
+                 href="https://map.kakao.com/?from=roughmap&srcid=307584620&confirmid=307584620&q=%EC%84%9C%EC%9A%B8%EC%8B%9C%EC%98%A8%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90&rv=on">로드뷰</a>
+              <span></span>
+              <a target="_blank" rel="noopener"
+                 href="https://map.kakao.com/?from=roughmap&eName=%EC%84%9C%EC%9A%B8%EC%8B%9C%EC%98%A8%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90&eX=858640.0000000498&eY=484101.00000000093">길찾기</a>
+              <span></span>
+              <a target="_blank" rel="noopener"
+                 href="https://map.kakao.com?map_type=TYPE_MAP&from=roughmap&srcid=307584620&itemId=307584620&q=%EC%84%9C%EC%9A%B8%EC%8B%9C%EC%98%A8%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90&urlX=858640.0000000498&urlY=484101.00000000093">지도 크게 보기</a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-  </main>
-
-  <!-- 9) FOOTER -->
-  <footer class="footer">
-    <div class="container footer__grid">
-      <div>
-        <strong>Seoul Sion Dental Clinic</strong><br/>
-        <small>대표전화 055.715.2275</small>
+        <div class="location__mapNote">
+          <p>
+            방문 전 예약/문의는 <strong>네이버 예약</strong> 또는 <strong>전화</strong>로 도와드리겠습니다
+          </p>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
+<section class="naverReserve">
+  <a
+    href="https://booking.naver.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="naverReserve__link"
+    aria-label="네이버 예약 바로가기"
+  >
+    <span class="naverReserve__icon">
+      <img src="./img/logo_naver.png" alt="">
+    </span>
+    <span class="naverReserve__text">네이버 예약 바로가기</span>
+    <span class="naverReserve__arrow">›</span>
+  </a>
+</section>
+
+<!-- 9) FOOTER -->
+<footer class="footer" aria-label="푸터">
+  <div class="footer__bar">
+    <div class="container footer__inner"></div>
+  </div>
+
+  <div class="container footer__meta">
+    <div class="footer__cols">
+
+      <!-- 로고 -->
+      <div class="footer__brand">
+        <img
+          class="footer__logo"
+          src="./img/logo_footer.png"
+          alt="서울시온치과 로고"
+          onerror="this.style.display='none'"
+        >
+      </div>
+
+      <!-- 텍스트 -->
+      <div class="footer__info">
+        <p><strong>대표자</strong> 최호근</p>
+        <p><strong>사업자등록번호</strong> 000-00-00000</p>
+        <p>
+          <strong>주소</strong>
+          경남 창원시 마산회원구 3·15대로 624 롯데하이마트 4층
+        </p>
+
+        <!-- 약관 링크 -->
+        <ul class="footer__links">
+          <li><a href="#" target="_blank">개인정보처리방침</a></li>
+          <li><a href="#" target="_blank">이용약관</a></li>
+          <li><a href="#" target="_blank">비급여항목</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__copy">
       <small>© Seoul Sion Dental Clinic. All rights reserved.</small>
     </div>
-  </footer>
+  </div>
+</footer>
+
 
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script
+  charset="UTF-8"
+  class="daum_roughmap_loader_script"
+  src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
 
+<script src="./js/locationRoughmap.js"></script>
   <!-- 분리 JS -->
   <script src="./js/heroSwiper.js"></script>
   <script src="./js/doctorSwiper.js"></script>
