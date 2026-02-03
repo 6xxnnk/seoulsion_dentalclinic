@@ -35,8 +35,9 @@ button{font:inherit}
   1) LAYOUT HELPERS
 ========================================================= */
 .container{
-  width:min(var(--container), calc(100% - 48px));
-  margin:0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .section{padding:96px 0}
@@ -338,15 +339,13 @@ button{font:inherit}
 .about {
   position: relative;
   overflow: hidden;
-  /* 배경 이미지는 너가 원하는 걸로 교체 */
-  background: url("../img/about-bg.jpg") center/cover no-repeat;
+  background: url("../img/about-bg.png") center/cover no-repeat;
 }
 
 .about::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.86);
   pointer-events: none;
 }
 
@@ -383,85 +382,65 @@ button{font:inherit}
   position: relative;
 }
 
-.aboutItem__col--text {
+
+/* =========================
+   중앙 라인 + 중앙에서만 뻗는 가로선(T자)
+   ========================= */
+
+/* 중앙 세로 라인: 이미지처럼 살짝 두께감 + 컬러 */
+.aboutTimeline__line {
+  width: 2px;
+  background: rgba(56, 86, 73, 0.55);
+}
+
+/* 각 아이템에서 중앙 라인에만 "가로선"을 생성 */
+.aboutItem {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;          /* 세로 가운데 */
-  min-height: 210px;                /* 이미지 높이와 맞춤 (아래 img height와 동일) */
 }
 
-.aboutItem--left .aboutItem__col--text {
-  justify-self: start;
-  padding-right: 10px;
+/* 가로선 (중앙 라인에서 좌/우로 짧게) */
+.aboutItem::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 2px;
+  width: 70px; /* 이미지처럼 '짧게' */
+  background: rgba(56, 86, 73, 0.55);
+  transform: translateY(-50%);
 }
 
-.aboutItem--right .aboutItem__col--text {
-  justify-self: end;
-  padding-left: 10px;
-  text-align: left;
+/* 왼쪽 아이템은 중앙에서 "왼쪽으로" 뻗게 */
+.aboutItem--left::before {
+  transform: translate(-100%, -50%);
 }
 
+/* 오른쪽 아이템은 중앙에서 "오른쪽으로" 뻗게 */
+.aboutItem--right::before {
+  transform: translate(0, -50%);
+}
+
+/* 도트는 텍스트 위쪽 중앙(이미지처럼) */
 .aboutItem__dot {
   display: inline-block;
   width: 10px;
   height: 10px;
   border-radius: 999px;
   background: #2f5f4f;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  margin: 0;      
+  margin: 0 auto 14px; /* 중앙정렬 */
 }
 
-.aboutItem--left .aboutItem__dot {
-  right: -34px;                     /* 중앙 라인 쪽으로 튀어나오게 */
+/* 텍스트 정중앙 느낌: 블록 자체를 가운데로 */
+.aboutItem__col--text {
+  text-align: center;
 }
 
-.aboutItem--right .aboutItem__dot {
-  left: -34px;
+/* right쪽도 텍스트는 중앙정렬 유지 */
+.aboutItem--right .aboutItem__col--text {
+  text-align: center;
 }
 
-/* L자 연결선: 텍스트 블록에서 중앙 라인까지 "가로선" + "세로 짧은선" */
-.aboutItem__col--text::before,
-.aboutItem__col--text::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
 
-/* 가로선 */
-.aboutItem__col--text::before {
-  height: 1px;
-  background: rgba(56, 86, 73, 0.25);
-}
-
-/* 세로 짧은선 (L자의 꺾이는 느낌) */
-.aboutItem__col--text::after {
-  width: 1px;
-  height: 34px;
-  background: rgba(56, 86, 73, 0.25);
-}
-
-/* left 아이템: 중앙 라인(50%) → 텍스트 쪽으로 가로선 */
-.aboutItem--left .aboutItem__col--text::before {
-  right: -24px;
-  width: 24px;                      /* 중앙 라인까지 닿는 길이 */
-}
-.aboutItem--left .aboutItem__col--text::after {
-  right: -24px;                     /* 꺾이는 지점 */
-}
-
-/* right 아이템: 중앙 라인(50%) → 텍스트 쪽으로 가로선 */
-.aboutItem--right .aboutItem__col--text::before {
-  left: -24px;
-  width: 24px;
-}
-.aboutItem--right .aboutItem__col--text::after {
-  left: -24px;
-}
 
 .aboutItem__title {
   font-size: 22px;
@@ -512,7 +491,7 @@ button{font:inherit}
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 700ms ease, transform 700ms ease;
+ transition: opacity 800ms ease, transform 800ms ease;
   will-change: opacity, transform;
 }
 
@@ -577,18 +556,18 @@ button{font:inherit}
     left: -34px !important;
     right: auto !important;
   }
-
-  /* 연결선도 모바일 타임라인 기준으로 왼쪽만 사용 */
-  .aboutItem__col--text::before {
-    left: -24px !important;
-    right: auto !important;
-    width: 24px;
+  .aboutItem::before {
+    left: 18px; /* 너가 중앙 라인을 18px로 둔 값과 동일 */
+    width: 26px;
+    transform: translate(0, -50%);
   }
-  .aboutItem__col--text::after {
-    left: -24px !important;
-    right: auto !important;
+
+  .aboutItem--left::before,
+  .aboutItem--right::before {
+    transform: translate(0, -50%);
   }
 }
+
 
 @media (max-width: 480px) {
   .aboutItem__title {
