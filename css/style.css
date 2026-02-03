@@ -146,13 +146,13 @@ html{
 }
 .gnb{
   display:flex;
-  gap:30px;
+  gap:40px;
   align-items:center;
   margin-left: 50px;
 }
 .gnb a{
-  font-size:15px;         
-  font-weight:500;       
+  font-size:14px;         
+  font-weight:400;       
   letter-spacing:-0.02em;  
   padding:12px 10px;
   color:rgba(34,73,46,.9);
@@ -207,12 +207,12 @@ html{
   padding: 0;
 }
 
-/* ✅ 풀스크린: 헤더(109px) 제외 */
+/* ✅ 풀스크린: 헤더 제외 */
 .heroSwiper,
 .heroSlide{
   height: calc(100vh - var(--header-h));
-  min-height: 720px;  /* 너무 낮은 화면 방지 */
-  max-height: 980px;  /* 너무 큰 화면 방지 */
+  min-height: 640px;
+  max-height: 980px;
 }
 
 .heroSlide{
@@ -224,143 +224,103 @@ html{
 .heroSlide__bg{
   position: absolute;
   inset: 0;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: center/cover no-repeat;
   transform: scale(1.02);
 }
 
-
-.heroSlide__overlay{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 35%;
-  width: 65%;
-  pointer-events: none;
-}
-
-/* (선택) 오른쪽 톤 패널: 텍스트 안정 */
-.heroSlide__panel{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 50%;
-/*   background: rgba(14, 98, 40, 0.18); */
-  pointer-events: none;
-}
-
-/* ✅ 히어로 전용 프레임: 1920 기준 */
+/* 프레임 */
 .heroFrame{
   width: min(var(--container-hero), 100%);
   height: 100%;
   margin: 0 auto;
-  padding: 0;
   position: relative;
 }
 
-/* ✅ 텍스트 영역: 데스크탑 좌표 고정(1920 기준) */
-
-  .heroSlide__copy{
-    position: absolute;
-    top: 34vh;                /* ✅ 풀스크린 대응: px 대신 vh */
-    left: calc(50% + 81px);   /* ✅ 1920 기준(1041px) */
-    width: 680px;
-
-    color: #fff;
-    text-align: right;
-
-    word-break: keep-all;
-    overflow-wrap: break-word;
-  }
-
-  .hero__title{ 
-    margin: 0 0 14px;
-    font-weight: 900;
-    line-height: 1.15;
-    font-size: 64px;
-    letter-spacing: -0.02em;
-    
-  }
-
-  /* ✅ 데스크탑에서 타이틀 2줄 의도 유지 */
-  .hero__line{
-    display: block;
-    white-space: nowrap;
-  }
-
-  .hero__desc{
-    margin: 0;
-    font-size: 28px;
-    line-height: 1.25;
-    opacity: .92;
-    font-weight: 500;
-  }
-
-.pc-br{
-  display:inline;
+/* ✅ 텍스트 블록: 데스크탑에서 우측 고정, 모바일에서 자동 레이아웃 */
+.heroSlide__copy{
+  position: absolute;
+  top: 34vh;
+  right: 120px;             /* ✅ left 계산 대신 right 기준이 더 안정적 */
+  width: 680px;
+  color: #fff;
+  text-align: right;
+  word-break: keep-all;
 }
 
-/* ✅ 커스텀 화살표 버튼 */
+/* 타이틀 */
+.hero__title{
+  margin: 0 0 14px;
+  font-weight: 700;
+  line-height: 1.15;
+  font-size: 64px;
+  letter-spacing: -0.02em;
+}
 
+/* 데스크탑 타이틀은 의도대로 2줄 유지 */
+.hero__line{
+  display: block;
+  white-space: nowrap;
+}
 
+/* 본문 */
+.hero__desc{
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.55;
+  opacity: .92;
+  font-weight: 500;
+}
+
+.hero__desc--gap{
+  margin-top: 14px;   /* ✅ 기존 <br><br> 대신 */
+}
+
+.pc-br{ display: inline; }
+
+/* ✅ 커스텀 화살표 */
 .heroSlide__arrow{
   position: absolute;
-  right: 120px;
-  top: calc(50% + 60px);
+  right: 34px;
+  top: 50%;
   transform: translateY(-50%);
   width: 44px;
   height: 44px;
   border-radius: 999px;
-
-  background: transparent;                 /* ✅ 배경 제거 */
-  border: 1px solid rgba(255,255,255,.45); /* ✅ 얇은 라인 */
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.45);
   color: #fff;
-
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   transition: border-color .2s ease, transform .2s ease, opacity .2s ease;
   opacity: .9;
+  z-index: 5;
 }
 
-/* 텍스트 화살표  */
 .heroSlide__arrow span{
-  font-size: 22px;   
+  font-size: 22px;
   line-height: 1;
   transform: translateY(-1px);
-  letter-spacing: -0.02em;
   opacity: .95;
 }
 
-/* hover: 라인만 살짝 또렷 + 미세하게만 */
 .heroSlide__arrow:hover{
   border-color: rgba(255,255,255,.75);
   opacity: 1;
   transform: translateY(-50%) scale(1.02);
 }
 
-/* active: 눌림 느낌만 */
 .heroSlide__arrow:active{
   transform: translateY(-50%) scale(.98);
 }
 
-/* 포커스 접근성 */
 .heroSlide__arrow:focus-visible{
   outline: 2px solid rgba(244,240,226,.85);
   outline-offset: 3px;
 }
-/* 기본 swiper 화살표는 숨김 */
-.heroSwiper .swiper-button-prev,
-.heroSwiper .swiper-button-next{
-  opacity: 0;
-  pointer-events: none;
-}
 
-/* 페이지네이션 */
+/* pagination */
 .heroSwiper .swiper-pagination{
   bottom: 18px;
 }
@@ -371,7 +331,6 @@ html{
 .heroSwiper .swiper-pagination-bullet-active{
   opacity: 1;
 }
-
 
 
 .btn{
@@ -397,15 +356,193 @@ html{
   font-size:13px;
 }
 
-@media (max-width: 768px){
+/* //////////////////////////////////////////////////////////////////////////////// */
+/* =========================================================
+   TABLET (<=1024px)
+========================================================= */
+@media (max-width: 1024px){
+  :root{
+    --container: 920px;
+    --header-h: 72px;
+  }
+
+  .section{ padding: 76px 0; }
+  .section__title{ font-size: 34px; }
+
+  .gnb{ display: none; }
+  .hamburger{ display: block; }
+  .drawer{ display: block; }
+
+  /* HERO */
+  .heroSwiper,
+  .heroSlide{
+    height: calc(100vh - var(--header-h));
+    min-height: 640px;
+    max-height: none;
+  }
+
+  /* ✅ 텍스트: 우측 + 세로 가운데 정렬 */
+  .heroSlide__copy{
+    top: 0;
+    left: auto;
+    right: 28px;
+
+    width: min(560px, 56%);
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: right;
+  }
+
+  .hero__title{
+    font-size: 46px;
+    line-height: 1.12;
+    margin-bottom: 16px;
+  }
+
+  /* 태블릿: 자연 줄바꿈 허용 */
+  .hero__line{ white-space: normal; }
+
+  .hero__desc{
+    font-size: 20px;
+    line-height: 1.35;
+  }
+
   .heroSlide__arrow{
     right: 18px;
+    width: 50px;
+    height: 50px;
+  }
+  .heroSlide__arrow span{ font-size: 40px; }
+
+  .heroSwiper .swiper-pagination{ bottom: 14px; }
+
+  /* LAYOUT */
+  .about__grid,
+  .greeting__grid{ grid-template-columns: 1fr; }
+
+  .doctors__cards{ grid-template-columns: 1fr; }
+  .doctor{ grid-template-columns: 160px 1fr; }
+
+  .slidecard{ grid-template-columns: 260px 1fr; }
+
+  .equipment__panel{ grid-template-columns: 1fr; }
+  .equipment__media{ min-height: 260px; }
+
+  .location__grid{ grid-template-columns: 1fr; }
+  .map{ min-height: 360px; }
+}
+
+
+/* =========================================================
+   MOBILE (<=480px)
+========================================================= */
+@media (max-width: 480px){
+  .container{ width: calc(100% - 32px); }
+  .section{ padding: 58px 0; }
+
+  .section__title{ font-size: 26px; }
+  .section__sub{ font-size: 14px; }
+
+  /* HERO */
+  .heroSwiper,
+  .heroSlide{
+    height: calc(100vh - var(--header-h));
+    min-height: 560px;
+    max-height: none;
+  }
+
+  /* ✅ 모바일: 중앙 정렬 + 하단 배치 */
+  .heroSlide__copy{
+    right: 16px;
+    width: calc(100% - 32px);
+
+    text-align: center;
+    justify-content: flex-end;
+
+    padding-bottom: 84px; /* pagination 공간 */
+  }
+
+  .hero__title{
+    font-size: 34px;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+
+  .hero__line{ white-space: normal; }
+
+  .hero__desc{
+    font-size: 16px;
+    line-height: 1.45;
+
+  }
+  .heroSlide__arrow{
+    right: 12px;
+    top: 52%;
+    width: 44px;
+    height: 44px;
+  }
+  .heroSlide__arrow span{ font-size: 34px; }
+
+  .heroSwiper .swiper-pagination{ bottom: 10px; }
+
+  .btn{ height: 44px; padding: 0 16px; }
+
+  .doctor{ grid-template-columns: 1fr; }
+  .doctor__photo .media__placeholder{ min-height: 220px; }
+
+  .slidecard{ grid-template-columns: 1fr; }
+  .slidecard__media .media__placeholder{ min-height: 200px; }
+
+  .tcard__img{ height: 180px; }
+
+  .location__tel{ font-size: 22px; }
+}
+
+
+/* =========================================================
+   SMALL MOBILE (<=375px)  iOS 주소창 대응
+========================================================= */
+@media (max-width: 375px){
+  .heroSwiper,
+  .heroSlide{
+    height: calc(100svh - var(--header-h));
+    min-height: 520px;
+  }
+
+  .heroSlide__copy{
+    right: 12px;
+    width: calc(100% - 24px);
+    text-align: center;
+    padding-bottom: 72px;
+  }
+ 
+  
+  .hero__title{
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .hero__line{ white-space: normal; }
+
+  .hero__desc{
+    font-size: 15px;
+    line-height: 1.45;
+    font-weight: 500;
+  }
+
+  .heroSlide__arrow{
     width: 40px;
     height: 40px;
+    right: 10px;
   }
-  .heroSlide__arrow span{
-    font-size: 20px;
-  }
+  .heroSlide__arrow span{ font-size: 30px; }
+
+  .heroSwiper .swiper-pagination{ bottom: 8px; }
 }
 
 /* =========================================================
@@ -1043,9 +1180,7 @@ html{
 /* =========================================================
   IMPLANT (Swiper)
 ========================================================= */
-/* =========================================================
-  IMPLANT (Swiper)
-========================================================= */
+
 .implant{
   position: relative;
   padding: 84px 0 72px;
@@ -1303,6 +1438,7 @@ html{
   align-items: start;
   margin-top: 32px;
 }
+
 
 /* LEFT */
 .treatMain{ min-width: 0; } 
@@ -2167,173 +2303,7 @@ html{
   }
 }
 
-/* =========================================================
-  8) TABLET (<= 1024px)
-  - 2열 → 1열로 자연스럽게 변환
-========================================================= */
-@media (max-width: 1024px){
-  :root{ --container: 920px; --header-h:72px; }
 
-  .section{padding:76px 0}
-  .section__title{font-size:34px}
-
-  .gnb{display:none}
-  .hamburger{display:block}
-  .drawer{display:block}
-
-/* HERO - Tablet (<=1024) : 풀스크린 유지 */
-  /* 히어로 풀스크린 유지 */
-  .heroSwiper,
-  .heroSlide{
-    height: calc(100vh - var(--header-h));
-    min-height: 640px;
-    max-height: none;
-  }
-
-  /* 그라데이션/패널을 더 넓게 → 경계선 방지 + 가독성 */
-  .heroSlide__overlay{ left: 24%; width: 76%; }
-  .heroSlide__panel{ left: 40%; width: 60%; }
-
-  /* ✅ 데스크탑 좌표 고정 해제 */
-  .heroSlide__copy{
-    top: 0;
-    left: auto;
-    right: 28px;
-    width: min(560px, 56%);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;   /* 세로 가운데 */
-    text-align: right;
-  }
-
-  /* 타이포 축소 */
-  .hero__title{
-    font-size: 46px;
-    line-height: 1.12;
-    margin-bottom: 16px;
-  }
-
-  /* 태블릿에서는 타이틀 2줄 강제 X (자연 줄바꿈 허용) */
-  .hero__line{
-    white-space: normal;
-  }
-
-  .hero__desc{
-    font-size: 20px;
-    line-height: 1.35;
-  }
-
-  /* 화살표 위치/크기 */
-  .heroSlide__arrow{
-    right: 18px;
-    width: 50px;
-    height: 50px;
-  }
-
-  .heroSlide__arrow span{ font-size: 40px; }
-
-  /* 페이지네이션 */
-  .heroSwiper .swiper-pagination{ bottom: 14px; }
-  .about__grid,
-  .greeting__grid{
-    grid-template-columns: 1fr;
-  }
-
-  .doctors__cards{
-    grid-template-columns: 1fr;
-  }
-  .doctor{
-    grid-template-columns: 160px 1fr;
-  }
-
-  .slidecard{
-    grid-template-columns: 260px 1fr;
-  }
-
-  .equipment__panel{
-    grid-template-columns: 1fr;
-  }
-  .equipment__media{min-height:260px}
-
-  .location__grid{
-    grid-template-columns: 1fr;
-  }
-  .map{min-height:360px}
-}
-
-/* =========================================================
-  9) MOBILE (<= 480px)
-  - 타이포/패딩/슬라이드 카드 축소
-========================================================= */
-@media (max-width: 480px){
-  .container{width: calc(100% - 32px)}
-  .section{padding:58px 0}
-
-  .section__title{font-size:26px}
-  .section__sub{font-size:14px}
-
-   .heroSwiper,
-  .heroSlide{
-    height: calc(100vh - var(--header-h));
-    min-height: 560px;
-    max-height: none;
-  }
-
-  /* 모바일은 더 넓게 덮어야 텍스트가 안정 */
-  .heroSlide__overlay{ left: 12%; width: 88%; }
-  .heroSlide__panel{ left: 22%; width: 78%; }
-
-  /* ✅ 텍스트 영역: 하단/중앙 느낌으로 정리 */
-  .heroSlide__copy{
-    right: 16px;
-    width: calc(100% - 32px);
-    text-align: center;           /* 모바일은 중앙이 더 깔끔 */
-    justify-content: flex-end;    /* 아래쪽에 배치 */
-    padding-bottom: 84px;         /* 페이지네이션/여백 고려 */
-  }
-
-  .hero__title{
-    font-size: 34px;
-    line-height: 1.15;
-    margin-bottom: 14px;
-  }
-
-  /* 모바일도 자연 줄바꿈 허용 */
-  .hero__line{ white-space: normal; }
-
-  .hero__desc{
-    font-size: 16px;
-    line-height: 1.45;
-  }
-
-  /* 화살표는 너무 튀지 않게 */
-  .heroSlide__arrow{
-    right: 12px;
-    top: 52%;
-    width: 44px;
-    height: 44px;
-  }
-  .heroSlide__arrow span{ font-size: 34px; }
-
-  .heroSwiper .swiper-pagination{ bottom: 10px; }
-
-  .btn{height:44px; padding:0 16px}
-
-  .doctor{
-    grid-template-columns: 1fr;
-  }
-  .doctor__photo .media__placeholder{min-height:220px}
-
-  .slidecard{
-    grid-template-columns: 1fr;
-  }
-  .slidecard__media .media__placeholder{min-height:200px}
-
-  .tcard__img{height:180px}
-
-  .location__tel{font-size:22px}
-}
 
 /* =========================================================
   10) MOBILE DRAWER (CSS only, JS로 토글 권장)
@@ -2397,69 +2367,3 @@ html{
 /* =========================================================
   HERO – Small Mobile (iPhone SE: 375 x 667)
 ========================================================= */
-@media (max-width: 375px){
-
-  /* 풀스크린 유지 (주소창/툴바 대응) */
-  .heroSwiper,
-  .heroSlide{
-    height: calc(100svh - var(--header-h)); /* iOS 대응 */
-    min-height: 520px;
-  }
-
-  /* 그라데이션 더 넓게 → 텍스트 가독성 확보 */
-  .heroSlide__overlay{
-    left: 8%;
-    width: 92%;
-  }
-  .heroSlide__panel{
-    left: 18%;
-    width: 82%;
-  }
-
-  /* 텍스트 블록 */
-  .heroSlide__copy{
-    right: 12px;
-    width: calc(100% - 24px);
-    text-align: center;
-    padding-bottom: 72px; /* pagination 영역 확보 */
-  }
-
-  /* 타이틀 */
-  .hero__title{
-    font-size: 28px;       /* SE에서 가장 안전한 값 */
-    line-height: 1.2;
-    margin-bottom: 12px;
-  }
-
-  .hero__line{
-    white-space: normal;   /* 강제 2줄 해제 */
-  }
-
-  /* 설명 문구 */
-  .hero__desc{
-    font-size: 15px;
-    line-height: 1.45;
-    font-weight: 500;
-  }
-
-  }
-  /* 두 문단 간격 */
-  .hero__desc-line + .hero__desc-line{
-    margin-top: 10px;
-  }
-
-  /* 화살표 버튼 축소 */
-  .heroSlide__arrow{
-    width: 40px;
-    height: 40px;
-    right: 10px;
-  }
-  .heroSlide__arrow span{
-    font-size: 30px;
-  }
-
-  /* 페이지네이션 위치 */
-  .heroSwiper .swiper-pagination{
-    bottom: 8px;
-  }
-

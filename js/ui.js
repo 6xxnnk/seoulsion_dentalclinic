@@ -1,30 +1,44 @@
-// ui.js
 document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.querySelector(".hamburger");
   const drawer = document.querySelector(".drawer");
-  const openBtn = document.querySelector(".hamburger");
-  const closeBtn = document.querySelector(".drawer__close");
-  const backdrop = document.querySelector(".drawer__backdrop");
-  const links = document.querySelectorAll(".drawer__links a");
 
-  const openDrawer = () => {
+  if (!btn || !drawer) return;
+
+  // (선택) 드로어 오버레이가 있다면
+  const overlay = document.querySelector(".drawerOverlay");
+
+  const open = () => {
     drawer.classList.add("is-open");
-    openBtn.setAttribute("aria-expanded", "true");
-    drawer.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
+    btn.classList.add("is-open");
+    btn.setAttribute("aria-expanded", "true");
+    document.documentElement.classList.add("is-drawer-open"); // 스크롤 잠금용
   };
 
-  const closeDrawer = () => {
+  const close = () => {
     drawer.classList.remove("is-open");
-    openBtn.setAttribute("aria-expanded", "false");
-    drawer.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
+    btn.classList.remove("is-open");
+    btn.setAttribute("aria-expanded", "false");
+    document.documentElement.classList.remove("is-drawer-open");
   };
 
-  openBtn.addEventListener("click", openDrawer);
-  closeBtn.addEventListener("click", closeDrawer);
-  backdrop.addEventListener("click", closeDrawer);
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    drawer.classList.contains("is-open") ? close() : open();
+  });
 
-  links.forEach(link => {
-    link.addEventListener("click", closeDrawer);
+  // 오버레이 클릭 닫기(있을 때만)
+  overlay?.addEventListener("click", close);
+
+  // ESC로 닫기
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
+
+  // 바깥 클릭 닫기(드로어 내부 클릭은 무시)
+  document.addEventListener("click", (e) => {
+    if (!drawer.classList.contains("is-open")) return;
+    if (drawer.contains(e.target) || btn.contains(e.target)) return;
+    close();
   });
 });
