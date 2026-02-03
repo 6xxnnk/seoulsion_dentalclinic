@@ -259,7 +259,7 @@
   </div>
 </section>
 
-   <!-- 3) 의료진 소개 (Swiper) -->
+<!-- 3) 의료진 소개 (Swiper) -->
 <section class="section doctors" id="doctors">
   <div class="container">
     <div class="section__head section__head--center">
@@ -622,7 +622,7 @@
 
 
 <!-- 6) 진료 소개 (Main + Thumbs Swiper) -->
-<!-- 진료 소개 -->
+
 <section class="section treat" id="treat">
   <div class="container treat__wrap">
     <div class="section__head">
@@ -640,7 +640,7 @@
             <div class="swiper-slide">
               <article class="treatCard">
                 <figure class="treatCard__media">
-                  <img src="./img/treat-01.jpg" alt="치주치료 이미지" />
+                  <img src="./img/treat-01.png" alt="치주치료 이미지" />
                 </figure>
 
                 <div class="treatCard__body">
@@ -663,7 +663,7 @@
             <div class="swiper-slide">
               <article class="treatCard">
                 <figure class="treatCard__media">
-                  <img src="./img/treat-02.jpg" alt="임플란트 이미지" />
+                  <img src="./img/treat-02.png" alt="임플란트 이미지" />
                 </figure>
                 <div class="treatCard__body">
                   <h3 class="treatCard__title">임플란트</h3>
@@ -718,14 +718,14 @@
       <aside class="treatThumbs">
         <div class="swiper treatThumbSwiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="./img/treat-01.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-02.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-03.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-04.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-05.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-06.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-07.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-08.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="./img/treat-01.png" alt=""></div>
+            <div class="swiper-slide"><img src="./img/treat-02.png" alt=""></div>
+            <div class="swiper-slide"><img src="./img/treat-03.png" alt=""></div>
+            <div class="swiper-slide"><img src="./img/treat-04.png" alt=""></div>
+            <div class="swiper-slide"><img src="./img/treat-05.png" alt=""></div>
+            <div class="swiper-slide"><img src="./img/treat-06.png" alt=""></div>
+            <div class="swiper-slide"><img src="./img/treat-07.png" alt=""></div>
+            <div class="swiper-slide"><img src="./img/treat-08.png" alt=""></div>
           </div>
         </div>
       </aside>
@@ -734,42 +734,50 @@
 </section>
 
 <!-- 7) 장비소개 -->
-    <section class="section equipment" id="equipment">
-      <div class="container">
-        <div class="section__head section__head--center">
-          <p class="section__eyebrow">Seoul Sion Dental Clinic</p>
-          <h2 class="section__title">장비 소개</h2>
-          <p class="section__sub">정밀 진단과 안전한 치료를 위한 장비 시스템</p>
-        </div>
+    <!-- 장비 소개 -->
+<section class="section equip" id="equip">
+  <div class="container">
+    <div class="section__head equip__head">
+      <p class="section__eyebrow">Seoul Sion Dental Clinic</p>
+      <h2 class="section__title">장비소개</h2>
+    </div>
 
-        <div class="equipment__grid">
-          <div class="equipment__tabs" role="tablist" aria-label="장비 카테고리">
-            <button class="chip is-active" type="button" data-eq="eq1" role="tab" aria-selected="true">장비소개1</button>
-            <button class="chip" type="button" data-eq="eq2" role="tab" aria-selected="false">장비소개2</button>
-            <button class="chip" type="button" data-eq="eq3" role="tab" aria-selected="false">장비소개3</button>
-            <button class="chip" type="button" data-eq="eq4" role="tab" aria-selected="false">장비소개4</button>
-          </div>
+    <!-- pills -->
+    <div class="equipTabs" role="tablist" aria-label="장비 선택">
+      <button class="equipTab is-active" type="button" role="tab" aria-selected="true" data-equip="novacare">
+        노바케어
+      </button>
+      <button class="equipTab" type="button" role="tab" aria-selected="false" data-equip="melag">
+        Melag
+      </button>
+      <button class="equipTab" type="button" role="tab" aria-selected="false" data-equip="3shape">
+        3Shape
+      </button>
+      <button class="equipTab" type="button" role="tab" aria-selected="false" data-equip="osstem">
+        오스템
+      </button>
+    </div>
 
-          <div class="equipment__panel card" id="eqPanel">
-            <div class="equipment__media">
-              <img id="eqImg" src="./assets/equipment-1.jpg" alt="장비 이미지" onerror="this.style.display='none'" />
-              <div class="media__placeholder" aria-hidden="true">장비 이미지 영역</div>
-            </div>
-            <div class="equipment__content">
-              <h3 id="eqTitle">장비이름</h3>
-              <p id="eqDesc">
-                시술 전·후 상태를 정밀하게 확인하고, 더 안전한 치료를 돕는 장비를 사용합니다.
-              </p>
-              <ul id="eqList" class="bullets">
-                <li>정밀 촬영/분석</li>
-                <li>안전한 진료 동선</li>
-                <li>체계적인 멸균 관리</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+    <!-- content -->
+    <div class="equipStage">
+      <figure class="equipCard">
+        <img class="equipImg"
+            src="./img/equipment01.png"
+            alt="노바케어 장비 이미지"
+            onerror="this.style.display='none'">
+      </figure>
+
+      <div class="equipText">
+        <h3 class="equipName">노바케어 <span>(수관살균시스템)</span></h3>
+        <p class="equipDesc">
+          진료에 사용되는 수관을 정기적으로 살균·관리하여,
+          위생과 안전 기준을 높입니다
+        </p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
 
     </main>
 
@@ -986,6 +994,7 @@
 
   <script src="./js/implantSwiper.js"></script>
   <script src="./js/treatmentSwiper.js"></script>
+  <script src="./js/equip.js"></script>
   <script src="./js/ui.js"></script>
   <script src="./js/locationRoughmap.js"></script>
 </body>

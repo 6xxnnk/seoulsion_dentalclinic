@@ -1302,7 +1302,7 @@ html{
 }
 
 /* LEFT */
-.treatMain{ min-width: 0; } /* grid overflow 방지 */
+.treatMain{ min-width: 0; } 
 .treatMainSwiper{ width: 100%; }
 
 .treatCard{
@@ -1317,13 +1317,13 @@ html{
   margin: 0;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: var(--shadow);
+
   background: #eee;
 }
 
 .treatCard__media img{
   width: 100%;
-  height: 260px;
+  height: 300px;
   object-fit: cover;
   display: block;
 }
@@ -1405,7 +1405,7 @@ html{
 .treatCount__slash{ opacity: .6; }
 .treatCount__total{ opacity: .8; }
 
-/* minimal round buttons like sample */
+
 .treatNav{ display: inline-flex; gap: 10px; }
 .treatBtn{
   width: 30px;
@@ -1451,11 +1451,35 @@ html{
 
 .treatThumbSwiper .swiper-slide{
   width: calc((100% - 16px) / 3); /* 3장 가로 */
-  height: 160px;
+  height: 300px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow);
   position: relative;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* 기본: 테두리 없음 */
+.treatThumbSwiper .swiper-slide::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 3px solid transparent;
+  pointer-events: none;
+  transition: border-color .25s ease;
+}
+
+/* 활성 썸네일 */
+.treatThumbSwiper .swiper-slide-thumb-active::after{
+  border-color: rgba(34, 73, 46, 0.9); /* var(--c-green) */
+}
+
+
+
+/* hover 시 이미지도 아주 미세하게 선명 */
+.treatThumbSwiper .swiper-slide:hover img{
+  filter: brightness(0.9) saturate(1);
 }
 
 .treatThumbSwiper img{
@@ -1492,47 +1516,126 @@ html{
 
 
 /* =========================================================
-  6) EQUIPMENT (Desktop)
+  7) EQUIPMENT (Desktop)
 ========================================================= */
-.equipment__grid{margin-top:18px}
-.equipment__tabs{
+/* ===== Equip section ===== */
+.equip{
+  position: relative;
+  padding: 110px 0;
+  background: url("../img/equipment_bg.png") center/cover no-repeat;
+  overflow: hidden;
+}
+
+/* 배경 오버레이(이미지처럼 밝게) */
+.equip::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  pointer-events:none;
+}
+
+.equip .container{ position: relative; z-index: 1; }
+
+.equip__head{ text-align:center; margin-bottom: 18px; }
+
+/* pills */
+.equipTabs{
   display:flex;
-  gap:10px;
+  gap:12px;
   justify-content:center;
   flex-wrap:wrap;
-  margin-bottom:18px;
-}
-.chip{
-  height:38px;
-  padding:0 14px;
-  border-radius:999px;
-  border:1px solid rgba(34,73,46,.18);
-  background:#fff;
-  color:rgba(34,73,46,.85);
-  font-weight:800;
-}
-.chip.is-active{
-  background:var(--c-green);
-  color:#fff;
-  border-color:var(--c-green);
+  margin: 18px 0 36px;
 }
 
-.equipment__panel{
-  display:grid;
-  grid-template-columns: 420px 1fr;
-  gap:0;
+.equipTab{
+  height: 34px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(34,73,46,.35);
+  background: rgba(255,255,255,.55);
+  color: var(--c-green);
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
 }
-.equipment__media{
-  min-height:280px;
-  background:rgba(34,73,46,.06);
+
+.equipTab:hover{
+  transform: translateY(-1px);
+  border-color: rgba(34,73,46,.55);
 }
-.equipment__media img{width:100%; height:100%; object-fit:cover}
-.equipment__content{padding:22px}
-.equipment__content h3{margin:0 0 8px; color:var(--c-green)}
-.equipment__content p{margin:0 0 12px; color:var(--muted)}
-.bullets{margin:0; padding-left:18px; color:rgba(34,73,46,.85)}
 
+.equipTab.is-active{
+  background: var(--c-green);
+  color: #fff;
+  border-color: var(--c-green);
+}
 
+/* stage */
+.equipStage{
+  max-width: 720px;
+  margin: 0 auto;
+  text-align:center;
+}
+
+/* 카드(장비 이미지 박스) */
+.equipCard{
+  margin: 0 auto 22px;
+  width: min(520px, 100%);
+  border-radius: 14px;
+  background: rgba(255,255,255,.92);
+  box-shadow: var(--shadow);
+  padding: 28px 26px;
+  border: 1px solid rgba(0,0,0,.04);
+}
+
+.equipCard img{
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  display:block;
+}
+
+/* 텍스트 */
+.equipName{
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--c-green);
+  letter-spacing: -0.02em;
+}
+
+.equipName span{
+  font-size: 14px;
+  font-weight: 800;
+  color: rgba(27,27,27,.65);
+}
+
+.equipDesc{
+  margin: 0 auto;
+  max-width: 560px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* 전환 애니메이션(이미지/텍스트 살짝 페이드) */
+.equipStage.is-switching .equipCard,
+.equipStage.is-switching .equipText{
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.equipCard, .equipText{
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+/* 반응형 */
+@media (max-width: 768px){
+  .equip{ padding: 80px 0; }
+  .equipCard img{ height: 220px; }
+}
 /* =========================================================
   8) LOCATION
 ========================================================= */
