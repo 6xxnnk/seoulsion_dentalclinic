@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 맨 위로 버튼 (있을 때만)
-  const topBtn = document.querySelector(".quick__top");
+  const topBtn = document.querySelector(".locationQuick__top");
   if (topBtn) {
     topBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
