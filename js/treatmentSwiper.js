@@ -1,50 +1,54 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const barEl = document.getElementById("treatBar");
-  const fracEl = document.getElementById("treatFraction");
+// Treat section Swipers (main + right thumbs) + bottom bar sync
+(() => {
+  const mainEl = document.querySelector(".treatMainSwiper");
+  const thumbEl = document.querySelector(".treatThumbSwiper");
+  if (!mainEl || !thumbEl) return;
 
-  // 1️⃣ 썸네일 먼저
-  const thumbsSwiper = new Swiper(".treatmentThumbsSwiper", {
-    slidesPerView: 3,
-    spaceBetween: 16,
-    watchSlidesProgress: true,
-    watchSlidesVisibility: true,
-    allowTouchMove: true,
-  });
+  const fill = document.querySelector(".treatProgress__fill");
+  const cur = document.querySelector(".treatCount__current");
+  const total = document.querySelector(".treatCount__total");
 
-  // 2️⃣ 메인 Swiper
-  const mainSwiper = new Swiper(".treatmentMainSwiper", {
-    slidesPerView: 1,
-    speed: 600,
-    loop: false,
+  const prevBtn = document.querySelector(".treatBtn--prev");
+  const nextBtn = document.querySelector(".treatBtn--next");
 
-    navigation: {
-      nextEl: ".treatNext",
-      prevEl: ".treatPrev",
-    },
-
-    thumbs: {
-      swiper: thumbsSwiper,
-    },
-
-    on: {
-      init() {
-        updateUI(this);
-      },
-      slideChange() {
-        updateUI(this);
-      },
-    },
-  });
-
-  function updateUI(swiper){
-    const total = swiper.slides.length;
-    const current = swiper.realIndex + 1;
-
-    if (fracEl) {
-      fracEl.innerHTML = `<strong>${current}</strong> / ${total}`;
-    }
-    if (barEl) {
-      barEl.style.width = `${(current / total) * 100}%`;
-    }
-  }
+  const thumbs = new Swiper(thumbEl, {
+  direction: "horizontal",   // ✅ 가로
+  slidesPerView: 3,
+  spaceBetween: 8,
+  watchSlidesProgress: true,
+  allowTouchMove: true
 });
+
+  const main = new Swiper(mainEl, {
+    speed: 650,
+    effect: "slide",
+    slidesPerView: 1,
+    spaceBetween: 0,
+    thumbs: { swiper: thumbs },
+    on: {
+      init(swiper){
+        const t = swiper.slides.length;
+        if (total) total.textContent = String(t);
+        updateBar(swiper);
+      },
+      slideChange(swiper){
+        updateBar(swiper);
+      }
+    }
+  });
+
+  // custom nav
+  prevBtn?.addEventListener("click", () => main.slidePrev());
+  nextBtn?.addEventListener("click", () => main.slideNext());
+
+  function updateBar(swiper){
+    const t = swiper.slides.length;
+    const i = swiper.realIndex + 1;
+
+    if (cur) cur.textContent = String(i);
+
+    // progress: (i-1)/(t-1) but sample looks like step blocks -> we use i/t 느낌
+    const pct = (i / t) * 100;
+    if (fill) fill.style.width = `${pct}%`;
+  }
+})();
