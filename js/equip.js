@@ -19,19 +19,19 @@
     melag: {
       img: "./img/equipment02.png",
       alt: "Melag 멸균 장비 이미지",
-      name: "Melag <span>(멸균 시스템)</span>",
+      name: "Vacuklav 43B+ (B class) <span>(멸균기)</span>",
       desc: "의료기기 멸균 과정을 체계화하여 감염 관리 수준을 강화합니다"
     },
     "3shape": {
       img: "./img/equipment03.png",
       alt: "3Shape 구강스캐너 이미지",
-      name: "3Shape <span>(구강스캐너)</span>",
+      name: "Trios 6 <span>(3D구강스캐너)</span>",
       desc: "정밀 스캔으로 오차를 줄이고, 보다 정확한 진단과 계획 수립에 도움을 줍니다"
     },
     osstem: {
       img: "./img/equipment04.png",
       alt: "오스템 장비 이미지",
-      name: "오스템 <span>(임플란트 시스템)</span>",
+      name: "T2 plus <span>(CBCT)</span>",
       desc: "검증된 시스템을 기반으로 안정적인 식립과 사후 관리를 지원합니다"
     }
   };

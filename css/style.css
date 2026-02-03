@@ -10,7 +10,7 @@
   --muted:#5a5a5a;
 
   --container:1200px;
-  --container-hero:1920px; /* ✅ 추가 추천 */
+  --container-hero:1920px;
   --radius:18px;
   --shadow:0 12px 28px rgba(0,0,0,.08);
 
@@ -281,6 +281,7 @@ html{
     line-height: 1.15;
     font-size: 64px;
     letter-spacing: -0.02em;
+    
   }
 
   /* ✅ 데스크탑에서 타이틀 2줄 의도 유지 */
@@ -1064,6 +1065,8 @@ html{
   font-size: 12px;
   letter-spacing: .14em;
   opacity: .95;
+  color:var(--c-brown);
+  text-transform:uppercase;
 }
 
 .implant__title{
@@ -1290,12 +1293,12 @@ html{
 /* =========================================================
   TREATMENT (진료 소개) - Main + Thumbs Swiper
 ========================================================= */
-/* ===== Treat layout ===== */
+
 .treat__wrap{ position: relative; }
 
 .treatLayout{
   display: grid;
-  grid-template-columns: 1fr 360px;
+  grid-template-columns: 1fr 500px;
   gap: 60px;
   align-items: start;
   margin-top: 32px;
@@ -1584,10 +1587,9 @@ html{
   margin: 0 auto 22px;
   width: min(520px, 100%);
   border-radius: 14px;
-  background: rgba(255,255,255,.92);
-  box-shadow: var(--shadow);
+
   padding: 28px 26px;
-  border: 1px solid rgba(0,0,0,.04);
+
 }
 
 .equipCard img{
@@ -1595,6 +1597,8 @@ html{
   height: 260px;
   object-fit: contain;
   display:block;
+  border: 0;
+  outline: none;
 }
 
 /* 텍스트 */
@@ -1646,7 +1650,7 @@ html{
 .tourWrap{
   position: relative;
   width: 100%;
-  padding: 0 120px;   /* 🔥 이 값이 핵심 (양옆 반 노출) */
+  padding: 0 90px;   
   box-sizing: border-box;
 }
 
@@ -1660,11 +1664,12 @@ html{
 .tourSwiper .swiper-slide{
   border-radius: 22px;
   overflow: hidden;
-
-  transform: scale(.94);
-  opacity: .6;
-  transition: transform .35s ease, opacity .35s ease;
+  transform: scale(0.86);
+  opacity: 0.45;
+  transition: transform .45s ease, opacity .45s ease;
+  width: 100%;
 }
+
 
 .tourSwiper .swiper-slide img{
   width: 100%;
@@ -1675,8 +1680,10 @@ html{
 
 /* 활성(가운데) 슬라이드 */
 .tourSwiper .swiper-slide-active{
-  transform: scale(1);
+  transform: scale(1.05);   /* 🔥 더 키움 */
   opacity: 1;
+  z-index: 2;
+  
 }
 
 /* 하단 바 */

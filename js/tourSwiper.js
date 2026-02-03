@@ -14,6 +14,9 @@
     loop: true,
     speed: 650,
     grabCursor: true,
+
+    slideToClickedSlide: true,   // ✅ 이 줄 추가
+
     breakpoints: {
       0: { slidesPerView: 1.15, spaceBetween: 14 },
       768: { slidesPerView: 2.2, spaceBetween: 22 },
@@ -21,7 +24,6 @@
     },
     on: {
       init(s){
-        // loop일 때 slides.length는 복제 포함이라 8로 고정
         if (total) total.textContent = "8";
         update(s);
       },
@@ -32,7 +34,6 @@
   });
 
   function update(s){
-    // realIndex: 0~7
     const i = (s.realIndex ?? 0) + 1;
     const t = 8;
 
