@@ -1276,32 +1276,40 @@ body.is-mnav-open{
 /* =========================================================
   IMPLANT (Swiper)
 ========================================================= */
+/* =========================================================
+  IMPLANT
+========================================================= */
+:root{
+  /* ✅ 슬라이드 높이 통일용(브레이크포인트별로 값만 바꿈) */
+  --icard-h: 360px;          /* PC 기본 */
+  --icard-media-h: 100%;     /* PC/태블릿(좌우 레이아웃): 카드 높이 꽉 */
+}
 
 .implant{
   position: relative;
   padding: 84px 0 72px;
-  background:url("../img/se4_bg.png") no-repeat center/cover;
+  background: url("../img/se4_bg.png") no-repeat center/cover;
   color: #fff;
   overflow: hidden;
 }
 
 .implant__head{
   position: relative;
-  text-align:center;
+  text-align: center;
   z-index: 1;
 }
 
 .implant__eyebrow{
-  margin:0 0 8px;
+  margin: 0 0 8px;
   font-size: 12px;
   letter-spacing: .14em;
   opacity: .95;
-  color:var(--c-brown);
-  text-transform:uppercase;
+  color: var(--c-brown);
+  text-transform: uppercase;
 }
 
 .implant__title{
-  margin:0 0 12px;
+  margin: 0 0 12px;
   font-size: 64px;
   font-weight: 900;
   letter-spacing: -0.03em;
@@ -1316,7 +1324,7 @@ body.is-mnav-open{
   word-break: keep-all;
 }
 
-/* 프레임 */
+/* frame */
 .implantFrame{
   position: relative;
   max-width: 1200px;
@@ -1325,76 +1333,83 @@ body.is-mnav-open{
   z-index: 1;
 }
 
-/* swiper 높이 */
+/* swiper wrapper (좌우 버튼 공간) */
 .implantSwiper{
   position: relative;
-  padding: 0 64px; /* 좌우 버튼 공간 */
+  padding: 0 64px;
 }
 
-/* 카드 */
+/* =========================================================
+  CARD (✅ breakpoint별 높이 통일)
+========================================================= */
 .icard{
   width: min(760px, calc(100% - 48px));
   margin: 0 auto;
 
+  height: var(--icard-h);           /* ✅ 통일 높이 */
   background: #fff;
+  color: var(--text);
   border-radius: 14px;
-  overflow: hidden;
- display: grid;
-  grid-template-columns: 1fr 1fr;   /* 이미지 / 텍스트 반반 */
-  align-items: center;
-
-  padding: 28px;                   /* ✅ 카드 내부 여백 */
-  gap: 28px;
-
-  /* 테두리/그림자 최소 (캡처처럼 깔끔) */
   box-shadow: 0 10px 24px rgba(0,0,0,.12);
-  
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+
+  padding: 28px;
+  overflow: hidden;                 /* ✅ 카드 밖으로는 절대 안넘치게 */
 }
 
-/* 왼쪽 이미지 */
+/* media */
 .icard__media{
-  position: relative;
+  height: var(--icard-media-h);     /* ✅ breakpoint별로 제어 */
   background: #fff;
-  height: 300px; 
-  overflow: hidden;
-   height: 100%;
-  padding: 14px;
   border-radius: 20px;
+  padding: 14px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  overflow: hidden;
 }
+
 .icard__media img{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display:block;
-  border-radius: 16px;  
+  border-radius: 16px;
+  display: block;
 }
 
-
-.icard__head{
-  align-items: center;
-  gap: 12px;              /* 숫자와 라벨 사이 간격 */
-  margin-bottom: 30px;
+/* body: 숫자 → pill → desc */
+.icard__body{
+  height: 100%;
   display: flex;
+  flex-direction: column;
 
+  /* ✅ 위에서부터 자연스럽게 쌓이게 */
+  justify-content: flex-start;
+  gap: 14px;
+
+  margin: 0;
 }
 
+/* 숫자 */
 .icard__no{
-  font-size: 50px;                 /* ⬅ 크게 */
-  font-weight: 700;
-  color:#A98E6C;           /* 베이지 */
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--c-brown);
   letter-spacing: .04em;
   line-height: 1;
-  margin: 0 0 6px;
+  flex: 0 0 auto;
 }
 
-
-.icard__label{
+/* pill */
+.icard__pill{
   display: inline-flex;
+  width: fit-content;
   align-items: center;
   justify-content: center;
 
@@ -1403,40 +1418,61 @@ body.is-mnav-open{
   background: var(--c-green);
   color: #fff;
 
-  font-size: 25px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
   line-height: 1;
+
+  flex: 0 0 auto;
 }
 
+/* ✅ desc는 모두 보이게(webkit clamp X) + 카드 높이 유지 위해 여기만 스크롤 */
 .icard__desc{
-   margin: 0;
+  margin: 0;
   color: rgba(27,27,27,.72);
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.65;
   letter-spacing: -0.02em;
 
+  flex: 1 1 auto;          /* ✅ 남은 높이 다 씀 */
+  overflow-y: auto;        /* ✅ 길면 여기만 스크롤 */
+  padding-right: 6px;      /* 스크롤 여백 */
 }
 
-/* 좌우 버튼(섹션 좌우에 크게) */
+/* (선택) desc 스크롤바 아주 얇게 */
+.icard__desc::-webkit-scrollbar{ width: 6px; }
+.icard__desc::-webkit-scrollbar-thumb{
+  background: rgba(34,73,46,.22);
+  border-radius: 999px;
+}
+.icard__desc::-webkit-scrollbar-track{ background: transparent; }
+
+/* =========================================================
+  NAV BUTTONS
+========================================================= */
 .implantPrev,
 .implantNext{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+
   width: 42px;
   height: 42px;
   border-radius: 999px;
+
   border: 1px solid rgba(255,255,255,.35);
   background: rgba(0,0,0,.12);
   color: #fff;
+
   cursor: pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   font-size: 34px;
   line-height: 1;
   z-index: 5;
 }
+
 .implantPrev{ left: 6px; }
 .implantNext{ right: 6px; }
 
@@ -1445,13 +1481,15 @@ body.is-mnav-open{
   background: rgba(0,0,0,.22);
 }
 
-/* 하단 진행 */
+/* =========================================================
+  PROGRESS
+========================================================= */
 .implantProgress{
   margin: 22px auto 0;
   width: min(720px, 100%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 14px;
 }
 
@@ -1460,41 +1498,58 @@ body.is-mnav-open{
   height: 3px;
   background: rgba(255,255,255,.28);
   border-radius: 999px;
-  overflow:hidden;
+  overflow: hidden;
 }
+
 .implantProgress__fill{
-  display:block;
+  display: block;
   height: 100%;
-  background: rgba(255,255,255,.92);
   width: 12.5%;
+  background: rgba(255,255,255,.92);
 }
 
 .implantProgress__count{
-  font-size: 12px;
-  opacity: .92;
-  letter-spacing: .02em;
   min-width: 44px;
-  text-align:right;
+  text-align: right;
+  font-size: 12px;
+  letter-spacing: .02em;
+  opacity: .92;
 }
 
-/* =========================
-  TABLET
-========================= */
+/* =========================================================
+  TABLET (<=1024px)
+========================================================= */
 @media (max-width: 1024px){
+  :root{
+    --icard-h: 340px;       /* ✅ 태블릿에서 통일 높이 */
+    --icard-media-h: 100%;
+  }
+
   .implant{ padding: 70px 0 62px; }
-  .implant__title{ font-size: 32px; }
+  .implant__title{ font-size: 34px; }
+
   .implantFrame{ padding: 0 18px; }
   .implantSwiper{ padding: 0 52px; }
 
   .icard{
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 260px 1fr;
+    gap: 22px;
+    padding: 22px;
   }
+
+  .icard__no{ font-size: 46px; }
+  .icard__pill{ font-size: 20px; }
 }
 
-/* =========================
-  MOBILE (iPhone SE 375 포함)
-========================= */
+/* =========================================================
+  MOBILE (<=480px)
+========================================================= */
 @media (max-width: 480px){
+  :root{
+    --icard-h: 430px;       /* ✅ 모바일에서 통일 높이 */
+    --icard-media-h: 170px; /* ✅ 모바일은 상단 이미지 높이 고정 */
+  }
+
   .implant{ padding: 58px 0 52px; }
   .implant__title{ font-size: 28px; }
   .implant__sub{ font-size: 13px; }
@@ -1503,21 +1558,43 @@ body.is-mnav-open{
   .implantSwiper{ padding: 0 44px; }
 
   .icard{
-    grid-template-columns: 1fr;
     width: min(340px, 100%);
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 18px;
   }
+
   .icard__media{
-    height: 170px;
+    padding: 10px;
+    border-radius: 18px;
   }
-  .icard__body{
-    padding: 18px 18px 18px;
+
+  .icard__media img{
+    border-radius: 14px;
   }
+
+  .icard__no{ font-size: 40px; }
+  .icard__pill{
+    font-size: 18px;
+    padding: 9px 14px;
+  }
+  .icard__desc{ font-size: 14px; }
 
   .implantPrev,
   .implantNext{
     width: 38px;
     height: 38px;
     font-size: 30px;
+  }
+}
+
+/* =========================================================
+  SMALL MOBILE (<=375px)
+========================================================= */
+@media (max-width: 375px){
+  :root{
+    --icard-h: 410px;       /* ✅ 375에서도 통일 높이 */
+    --icard-media-h: 160px;
   }
 }
 
