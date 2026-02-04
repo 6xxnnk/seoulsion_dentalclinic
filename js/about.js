@@ -1,23 +1,16 @@
-// About reveal animation (repeat on scroll)
+// About reveal animation (repeat, less flicker)
 (() => {
   const targets = document.querySelectorAll(".reveal");
   if (!targets.length) return;
 
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-        } else {
-          entry.target.classList.remove("is-visible");
-        }
-      });
-    },
-    {
-      threshold: 0.15,          // 15% 보이면 트리거
-      rootMargin: "0px 0px -10% 0px" // 살짝 여유 줘서 자연스럽게
-    }
-  );
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle("is-visible", entry.isIntersecting);
+    });
+  }, {
+    threshold: 0.08,                 // ✅ 경계 튐 감소
+    rootMargin: "0px 0px -18% 0px",  // ✅ 살짝 더 여유
+  });
 
   targets.forEach((el) => io.observe(el));
 })();

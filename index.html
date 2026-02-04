@@ -272,11 +272,12 @@
   </div>
 
   <div class="doctorsFrame doctorsFrame--bg">
-
     <div class="swiper doctorsSwiper">
       <div class="swiper-wrapper">
 
-        <!-- Slide 1 -->
+        <!-- =======================
+          Slide 1
+        ======================== -->
         <div class="swiper-slide">
           <article class="dcard">
             <div class="dcard__top">
@@ -285,48 +286,75 @@
             </div>
 
             <div class="dcard__grid">
+
+              <!-- PHOTO -->
               <div class="dcard__photo">
                 <img src="./img/doctor-1.jpg" alt="의료진 사진" onerror="this.style.display='none'">
               </div>
 
-              <div class="dcard__spec">
-                <div class="dcard__col">
-                  <p class="dcard__label">現</p>
+              <!-- SPEC -->
+              <div class="dcard__spec" data-tabs>
+
+                <!-- ✅ MOBILE 전용 탭 -->
+                <div class="dcard__tabs" role="tablist" aria-label="의료진 경력 선택">
+                  <button
+                    class="dcard__tab is-active"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    data-tab="cur">
+                    現
+                  </button>
+                  <button
+                    class="dcard__tab"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    data-tab="prev">
+                    前
+                  </button>
+                </div>
+
+                <!-- 現 -->
+                <div class="dcard__col" data-panel="cur">
                   <ul class="dcard__list">
                     <li>대한구강악안면임플란트학회 정회원</li>
-                    <li>국제임플란트학회(International Team for Implantology) 정회원</li>
+                    <li>국제임플란트학회(ITI) 정회원</li>
                     <li>대한치주과학회 정회원</li>
                     <li>대한영상치의학회 정회원</li>
                     <li>대한통합치의학회 정회원</li>
-                    <li>유럽두경부영상의학회(European Society of Head and Neck Radiology)정회원</li>
+                    <li>유럽두경부영상의학회 정회원</li>
                     <li>대한치과의사학회 우수발표상</li>
                     <li>대한진단검사치의학회 최우수발표상</li>
                     <li>대한영상치의학회 우수발표상</li>
                   </ul>
                 </div>
 
-                <div class="dcard__col">
-                  <p class="dcard__label">前</p>
+                <!-- 前 -->
+                <div class="dcard__col" data-panel="prev">
                   <ul class="dcard__list">
                     <li>서울대학교 치의학대학원 외래교수</li>
                     <li>보건복지부 인증 치주과 전문의</li>
                     <li>보건복지부 인증 영상치의학과 전문의</li>
                     <li>보건복지부 인증 통합치의학과 전문의</li>
-                    <li>(2024년3월 보건복지부 답변 기준 전국유일 치과전문의3개)</li>
-                    <li>서울대학교 치과병원 전공의과정 수료</li>
+                    <li>전국 유일 치과전문의 3개 보유</li>
+                    <li>서울대학교 치과병원 전공의 수료</li>
                     <li>서울대학교 치의학 박사 수료</li>
-                    <li>17회 영상치의학과 전문의 시험 전국수석</li>
+                    <li>영상치의학과 전문의 시험 전국수석</li>
                     <li>전 육군 제1기갑여단 의무대치과장</li>
                     <li>전 육군 제8기동사단 의무대치과장</li>
-                    <li>육군본부 제대 인정 우수치과군의관(인사참모부장 표창)</li>
+                    <li>육군본부 우수치과군의관 표창</li>
                   </ul>
                 </div>
+
               </div>
             </div>
           </article>
         </div>
 
-        <!-- Slide 2 -->
+        <!-- =======================
+          Slide 2
+        ======================== -->
         <div class="swiper-slide">
           <article class="dcard dcard--reverse">
             <div class="dcard__top">
@@ -335,18 +363,33 @@
             </div>
 
             <div class="dcard__grid">
-              <div class="dcard__photo">
+
+              <!-- PHOTO -->
+              <div class="dcard__photo dcard__photo--focus1">
                 <img src="./img/doctor-2.jpg" alt="의료진 사진" onerror="this.style.display='none'">
               </div>
 
-              <div class="dcard__spec">
-                <div class="dcard__col">
-                  <p class="dcard__label">現</p>
+              <!-- SPEC -->
+              <div class="dcard__spec" data-tabs>
+
+                <!-- MOBILE 탭 -->
+                <div class="dcard__tabs" role="tablist" aria-label="의료진 경력 선택">
+                  <button
+                    class="dcard__tab is-active"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    data-tab="cur">
+                    現
+                  </button>
+                </div>
+
+                <div class="dcard__col" data-panel="cur">
                   <ul class="dcard__list">
                     <li>보건복지부 인증 치과보철과 전문의</li>
                     <li>보건복지부 인증 통합치의학과 전문의</li>
                     <li>대한치과보철학회 인정의</li>
-                    <li>단국대학교 치과병원 전공의과정 수료</li>
+                    <li>단국대학교 치과병원 전공의 수료</li>
                     <li>단국대학교 치의학 석사</li>
                     <li>대한치과보철학회 정회원</li>
                     <li>대한턱관절교합학회 정회원</li>
@@ -355,8 +398,6 @@
                   </ul>
                 </div>
 
-
-            
               </div>
             </div>
           </article>
@@ -364,12 +405,14 @@
 
       </div>
 
+      <!-- NAV -->
       <button class="doctorsPrev" type="button" aria-label="이전">‹</button>
       <button class="doctorsNext" type="button" aria-label="다음">›</button>
-
-  <div class="swiper-pagination"></div>
+      <div class="swiper-pagination"></div>
+    </div>
   </div>
 </section>
+
 
 
 
@@ -1011,6 +1054,7 @@
   <script src="./js/about.js"></script>
 
   <script src="./js/doctorSwiper.js"></script>
+  <script src="./js/doctorSwiper_mobile.js"></script>
 
 
   <script src="./js/implantSwiper.js"></script>
