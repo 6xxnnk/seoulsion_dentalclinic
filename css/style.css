@@ -1385,13 +1385,12 @@ body.is-mnav-open{ overflow: hidden; }
 
 
 /* =========================================================
-  IMPLANT (Clean)
-========================================================= */
+  IMPLANT
+======================================================== */
 
-/* ✅ 높이 토큰: 기본(PC) */
 :root{
-  --icard-h: 360px;        /* 카드 높이 (PC) */
-  --icard-media-h: 100%;   /* 좌우 레이아웃일 때 media는 카드 높이 꽉 */
+  --icard-h: 360px;        /* PC */
+  --icard-media-h: 100%;   /* PC/Tablet: media = card height */
 }
 
 .implant{
@@ -1399,23 +1398,22 @@ body.is-mnav-open{ overflow: hidden; }
   padding: 84px 0 72px;
   background: url("../img/se4_bg.png") no-repeat center/cover;
   color: #fff;
-  overflow: hidden; /* ✅ 모바일 가로 튐 방지 */
+  overflow: hidden; /* 가로 튐 방지 */
 }
 
-/* head */
 .implant__head{
   position: relative;
-  z-index: 1;
   text-align: center;
+  z-index: 1;
 }
 
 .implant__eyebrow{
   margin: 0 0 8px;
   font-size: 12px;
   letter-spacing: .14em;
-  text-transform: uppercase;
   opacity: .95;
   color: var(--c-brown);
+  text-transform: uppercase;
 }
 
 .implant__title{
@@ -1428,7 +1426,7 @@ body.is-mnav-open{ overflow: hidden; }
 .implant__sub{
   margin: 0 auto;
   max-width: 720px;
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.7;
   opacity: .92;
   word-break: keep-all;
@@ -1443,25 +1441,12 @@ body.is-mnav-open{ overflow: hidden; }
   z-index: 1;
 }
 
-/* swiper: 좌우 버튼 공간 */
+
 .implantSwiper{
   position: relative;
   padding: 0 64px;
-  width: 100%;
-  box-sizing: border-box;
 }
 
-/* ✅ Swiper 기본 요소가 가로 튀는 경우 방지 */
-.implantSwiper .swiper-wrapper{
-  box-sizing: border-box;
-}
-.implantSwiper .swiper-slide{
-  box-sizing: border-box;
-}
-
-/* =========================================================
-  CARD
-========================================================= */
 .icard{
   width: min(760px, calc(100% - 48px));
   margin: 0 auto;
@@ -1479,10 +1464,9 @@ body.is-mnav-open{ overflow: hidden; }
 
   padding: 28px;
   overflow: hidden;
-  box-sizing: border-box;
 }
 
-/* media */
+
 .icard__media{
   height: var(--icard-media-h);
   background: #fff;
@@ -1494,7 +1478,6 @@ body.is-mnav-open{ overflow: hidden; }
   justify-content: center;
 
   overflow: hidden;
-  box-sizing: border-box;
 }
 
 .icard__media img{
@@ -1543,7 +1526,7 @@ body.is-mnav-open{ overflow: hidden; }
   flex: 0 0 auto;
 }
 
-/* desc: 남는 영역만 스크롤 */
+/* desc */
 .icard__desc{
   margin: 0;
   color: rgba(27,27,27,.72);
@@ -1556,7 +1539,7 @@ body.is-mnav-open{ overflow: hidden; }
   padding-right: 6px;
 }
 
-/* 스크롤바(선택) */
+/* desc scrollbar */
 .icard__desc::-webkit-scrollbar{ width: 6px; }
 .icard__desc::-webkit-scrollbar-thumb{
   background: rgba(34,73,46,.22);
@@ -1565,14 +1548,13 @@ body.is-mnav-open{ overflow: hidden; }
 .icard__desc::-webkit-scrollbar-track{ background: transparent; }
 
 /* =========================================================
-  NAV BUTTONS
+  NAV BUTTONS (Desktop base)
 ========================================================= */
 .implantPrev,
 .implantNext{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-
   width: 42px;
   height: 42px;
   border-radius: 999px;
@@ -1635,13 +1617,8 @@ body.is-mnav-open{ overflow: hidden; }
 }
 
 /* =========================================================
-  RESPONSIVE
-  - Tablet: <=1024
-  - Mobile: <=600
-  - Small Mobile: <=480
+  TABLET (<=1024px)  ✅ 기존 느낌 유지
 ========================================================= */
-
-/* ✅ Tablet (iPad mini/air/pro 포함 안정) */
 @media (max-width: 1024px){
   :root{
     --icard-h: 340px;
@@ -1649,7 +1626,6 @@ body.is-mnav-open{ overflow: hidden; }
   }
 
   .implant{ padding: 70px 0 62px; }
-
 
   .implantFrame{ padding: 0 18px; }
   .implantSwiper{ padding: 0 52px; }
@@ -1663,7 +1639,8 @@ body.is-mnav-open{ overflow: hidden; }
   .icard__no{ font-size: 46px; }
   .icard__pill{ font-size: 20px; }
 }
-/* ✅ Desktop/Tablet: 화살표는 hover에서만 보이게(원하면) */
+
+
 @media (min-width: 601px){
   .implantPrev,
   .implantNext{
@@ -1678,27 +1655,24 @@ body.is-mnav-open{ overflow: hidden; }
   }
 }
 
-/* ✅ Mobile 공통 (대부분 스마트폰: 600 이하) */
+
 @media (max-width: 600px){
-  /* 1) 화살표 완전 삭제 */
+  /* 화살표 삭제 */
   .implantPrev,
   .implantNext{
     display: none !important;
   }
 
-  /* 2) Swiper 좌우 패딩을 peek용으로 바꿈
-     - 기존 0 44px 대신 "화면 가장자리 여백 + peek" 느낌 */
+  /* peek용 패딩 */
+  .implantFrame{
+    padding: 0 0; /* 모바일에서 swiper가 화면에 더 시원하게 */
+  }
+
   .implantSwiper{
-    padding: 0 18px;   /* 양옆 안전 여백 */
+    padding: 0 18px;
   }
 
-  /* 3) 카드 폭을 '거의 꽉'으로 → 양옆이 살짝 보이도록 */
-  .icard{
-    width: 100%;
-    margin: 0;         /* slide 내부에서 중앙 정렬로 처리 */
-  }
-
-  /* 4) slide 자체를 중앙에 두고, active만 더 또렷하게 */
+  /* slide = 센터 정렬 + active 강조 */
   .implantSwiper .swiper-slide{
     display: flex;
     justify-content: center;
@@ -1710,16 +1684,62 @@ body.is-mnav-open{ overflow: hidden; }
     opacity: 1;
     transform: scale(1);
   }
+  
+  /* 카드 폭 */
+  .icard{
+    width: 100%;
+    margin: 0;
+  }
+
+  
+  /* 페이지바 전체 간격 */
+  .implantProgress{
+    margin: 12px auto 0;   /* 기존 22px → 축소 */
+    gap: 8px;
+    width: min(520px, 100%) ;
+    padding: 0 12px ;
+  }
+
+  /* 바 높이 줄이기 */
+  .implantProgress__bar{
+    height: 2px;           /* 기존 3px → 슬림 */
+  }
+
+  /* 채움 바도 동일 */
+  .implantProgress__fill{
+    height: 100%;
+  }
+
+  /* 숫자 크기 축소 */
+  .implantProgress__count{
+    font-size: 11px;       /* 기존 12px */
+    min-width: 34px;
+    opacity: .85;
+  }
 }
 
-/* ✅ Small Mobile (iPhone SE~480) */
+
 @media (max-width: 480px){
   :root{
     --icard-h: 430px;
     --icard-media-h: 170px;
   }
 
-  .implant{ padding: 58px 0 52px; }}
+  .implant{ padding: 58px 0 52px; }
+  .implant__sub{ font-size: 15px; }
+
+  .implantProgress{
+    margin-top: 10px ;
+    gap: 7px ;
+    padding: 0 10px ;
+  }
+  .implantProgress__bar{
+    height: 2px ;
+  }
+  .implantProgress__count{
+    font-size: 10.5px ;
+    min-width: 32px ;
+  }
 
   .icard{
     grid-template-columns: 1fr;
@@ -1741,25 +1761,16 @@ body.is-mnav-open{ overflow: hidden; }
     padding: 9px 14px;
   }
   .icard__desc{ font-size: 14px; }
-
-  .implantPrev,
-  .implantNext{
-    width: 38px;
-    height: 38px;
-    font-size: 30px;
-  }
 }
 
 
-/* =========================================================
-  SMALL MOBILE (<=375px)
-========================================================= */
 @media (max-width: 375px){
   :root{
-    --icard-h: 410px;       /* ✅ 375에서도 통일 높이 */
+    --icard-h: 410px;
     --icard-media-h: 160px;
   }
 }
+
 
 /* =========================================================
   TREATMENT (진료 소개) - Main + Thumbs Swiper

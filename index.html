@@ -548,7 +548,7 @@
               <span class="icard__pill">상악동거상술</span>
               <p class="icard__desc">
                 위턱 뼈 높이가 부족할 때 상악동 점막을<br />
-                들어 올리고 뼈를 이식하여, 임플란트를 위한<br />
+                들어 올리고 뼈를 이식하여 임플란트를 위한<br />
                 공간을 확보하는 시술입니다
               </p>
             </div>
@@ -566,7 +566,7 @@
               <span class="icard__no">05</span>
               <span class="icard__pill">네비게이션 임플란트</span>
               <p class="icard__desc">
-                3D 디지털 시뮬레이션을 통해 보다<br />
+                3D 디지털 시뮬레이션을 통해<br />
                 명확하고 안정적으로 임플란트를 식립합니다
               </p>
             </div>
@@ -650,6 +650,9 @@
 
 <!-- 6) 진료 소개 (Main + Thumbs Swiper) -->
 
+<!-- =========================================================
+  TREAT (진료 소개)
+========================================================= -->
 <section class="section treat" id="treat">
   <div class="container treat__wrap">
     <div class="section__head">
@@ -658,26 +661,24 @@
     </div>
 
     <div class="treatLayout">
-      <!-- LEFT: 메인 슬라이드(이미지 + 텍스트) -->
+      <!-- LEFT: 메인 슬라이드 -->
       <div class="treatMain">
-        <div class="swiper treatMainSwiper">
+        <div class="swiper treatMainSwiper" aria-roledescription="carousel">
           <div class="swiper-wrapper">
 
-            <!-- Slide 1 -->
+            <!-- ✅ Slide 템플릿: img/src, title, desc, tags만 교체하면 끝 -->
             <div class="swiper-slide">
               <article class="treatCard">
                 <figure class="treatCard__media">
                   <img src="./img/treat-01.png" alt="치주치료 이미지" />
                 </figure>
-
                 <div class="treatCard__body">
                   <h3 class="treatCard__title">치주치료</h3>
                   <p class="treatCard__desc">
-                    잇몸의 염증에 의해 발생한 염증을 제거하여<br />
+                    잇몸의 염증을 제거하여<br />
                     치아의 토대를 튼튼하게 만드는 치료입니다.
                   </p>
-
-                  <div class="treatTags">
+                  <div class="treatTags" aria-label="치주치료 키워드">
                     <span class="tag tag--primary">자연치아 잇몸뼈 재생</span>
                     <span class="tag">조직유도재생술</span>
                     <span class="tag">유지치주치료</span>
@@ -686,7 +687,6 @@
               </article>
             </div>
 
-            <!-- Slide 2 -->
             <div class="swiper-slide">
               <article class="treatCard">
                 <figure class="treatCard__media">
@@ -695,10 +695,10 @@
                 <div class="treatCard__body">
                   <h3 class="treatCard__title">임플란트</h3>
                   <p class="treatCard__desc">
-                    상실된 치아를 대체하여 저작 기능과 심미를 회복하는<br />
+                    상실된 치아를 대체해 저작 기능과 심미를 회복하는<br />
                     맞춤형 임플란트 치료를 진행합니다.
                   </p>
-                  <div class="treatTags">
+                  <div class="treatTags" aria-label="임플란트 키워드">
                     <span class="tag tag--primary">정밀 진단</span>
                     <span class="tag">맞춤 식립</span>
                     <span class="tag">사후 관리</span>
@@ -707,24 +707,118 @@
               </article>
             </div>
 
-            <!-- Slide 3~8 (복사해서 이미지/텍스트만 변경) -->
-            <div class="swiper-slide"><article class="treatCard"><figure class="treatCard__media"><img src="./img/treat-03.jpg" alt=""></figure><div class="treatCard__body"><h3 class="treatCard__title">보철치료</h3><p class="treatCard__desc">기능과 심미를 고려해 자연스러운 교합을 회복합니다.</p><div class="treatTags"><span class="tag tag--primary">자연스러운 색상</span><span class="tag">정밀 교합</span><span class="tag">내구성</span></div></div></article></div>
-            <div class="swiper-slide"><article class="treatCard"><figure class="treatCard__media"><img src="./img/treat-04.jpg" alt=""></figure><div class="treatCard__body"><h3 class="treatCard__title">심미치료</h3><p class="treatCard__desc">미소 라인과 치아 비율을 고려한 심미 솔루션을 제공합니다.</p><div class="treatTags"><span class="tag tag--primary">자연스러운 라인</span><span class="tag">색조 조화</span><span class="tag">개인맞춤</span></div></div></article></div>
-            <div class="swiper-slide"><article class="treatCard"><figure class="treatCard__media"><img src="./img/treat-05.jpg" alt=""></figure><div class="treatCard__body"><h3 class="treatCard__title">충치치료</h3><p class="treatCard__desc">불필요한 삭제를 줄이고 정확하게 치료합니다.</p><div class="treatTags"><span class="tag tag--primary">정확한 진단</span><span class="tag">미세 삭제</span><span class="tag">재발 관리</span></div></div></article></div>
-            <div class="swiper-slide"><article class="treatCard"><figure class="treatCard__media"><img src="./img/treat-06.jpg" alt=""></figure><div class="treatCard__body"><h3 class="treatCard__title">신경치료</h3><p class="treatCard__desc">통증 원인을 정밀하게 제거하여 치아를 보존합니다.</p><div class="treatTags"><span class="tag tag--primary">치아 보존</span><span class="tag">정밀 세척</span><span class="tag">재감염 예방</span></div></div></article></div>
-            <div class="swiper-slide"><article class="treatCard"><figure class="treatCard__media"><img src="./img/treat-07.jpg" alt=""></figure><div class="treatCard__body"><h3 class="treatCard__title">교정치료</h3><p class="treatCard__desc">치열과 교합을 고려한 계획으로 깔끔한 라인을 만듭니다.</p><div class="treatTags"><span class="tag tag--primary">정밀 분석</span><span class="tag">맞춤 계획</span><span class="tag">유지 관리</span></div></div></article></div>
-            <div class="swiper-slide"><article class="treatCard"><figure class="treatCard__media"><img src="./img/treat-08.jpg" alt=""></figure><div class="treatCard__body"><h3 class="treatCard__title">예방/스케일링</h3><p class="treatCard__desc">정기 관리로 잇몸과 치아 건강을 오래 유지합니다.</p><div class="treatTags"><span class="tag tag--primary">정기 관리</span><span class="tag">염증 예방</span><span class="tag">구취 관리</span></div></div></article></div>
+            <div class="swiper-slide">
+              <article class="treatCard">
+                <figure class="treatCard__media">
+                  <img src="./img/treat-03.png" alt="보철치료 이미지" />
+                </figure>
+                <div class="treatCard__body">
+                  <h3 class="treatCard__title">보철치료</h3>
+                  <p class="treatCard__desc">기능과 심미를 고려해 자연스러운 교합을 회복합니다.</p>
+                  <div class="treatTags" aria-label="보철치료 키워드">
+                    <span class="tag tag--primary">자연스러운 색상</span>
+                    <span class="tag">정밀 교합</span>
+                    <span class="tag">내구성</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="treatCard">
+                <figure class="treatCard__media">
+                  <img src="./img/treat-04.png" alt="심미치료 이미지" />
+                </figure>
+                <div class="treatCard__body">
+                  <h3 class="treatCard__title">심미치료</h3>
+                  <p class="treatCard__desc">미소 라인과 치아 비율을 고려한 심미 솔루션을 제공합니다.</p>
+                  <div class="treatTags" aria-label="심미치료 키워드">
+                    <span class="tag tag--primary">자연스러운 라인</span>
+                    <span class="tag">색조 조화</span>
+                    <span class="tag">개인맞춤</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="treatCard">
+                <figure class="treatCard__media">
+                  <img src="./img/treat-05.png" alt="충치치료 이미지" />
+                </figure>
+                <div class="treatCard__body">
+                  <h3 class="treatCard__title">충치치료</h3>
+                  <p class="treatCard__desc">불필요한 삭제를 줄이고 정확하게 치료합니다.</p>
+                  <div class="treatTags" aria-label="충치치료 키워드">
+                    <span class="tag tag--primary">정확한 진단</span>
+                    <span class="tag">미세 삭제</span>
+                    <span class="tag">재발 관리</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="treatCard">
+                <figure class="treatCard__media">
+                  <img src="./img/treat-06.png" alt="신경치료 이미지" />
+                </figure>
+                <div class="treatCard__body">
+                  <h3 class="treatCard__title">신경치료</h3>
+                  <p class="treatCard__desc">통증 원인을 정밀하게 제거하여 치아를 보존합니다.</p>
+                  <div class="treatTags" aria-label="신경치료 키워드">
+                    <span class="tag tag--primary">치아 보존</span>
+                    <span class="tag">정밀 세척</span>
+                    <span class="tag">재감염 예방</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="treatCard">
+                <figure class="treatCard__media">
+                  <img src="./img/treat-07.png" alt="교정치료 이미지" />
+                </figure>
+                <div class="treatCard__body">
+                  <h3 class="treatCard__title">교정치료</h3>
+                  <p class="treatCard__desc">치열과 교합을 고려한 계획으로 깔끔한 라인을 만듭니다.</p>
+                  <div class="treatTags" aria-label="교정치료 키워드">
+                    <span class="tag tag--primary">정밀 분석</span>
+                    <span class="tag">맞춤 계획</span>
+                    <span class="tag">유지 관리</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="treatCard">
+                <figure class="treatCard__media">
+                  <img src="./img/treat-08.png" alt="예방/스케일링 이미지" />
+                </figure>
+                <div class="treatCard__body">
+                  <h3 class="treatCard__title">예방/스케일링</h3>
+                  <p class="treatCard__desc">정기 관리로 잇몸과 치아 건강을 오래 유지합니다.</p>
+                  <div class="treatTags" aria-label="예방/스케일링 키워드">
+                    <span class="tag tag--primary">정기 관리</span>
+                    <span class="tag">염증 예방</span>
+                    <span class="tag">구취 관리</span>
+                  </div>
+                </div>
+              </article>
+            </div>
 
           </div>
         </div>
 
-        <!-- 하단 바(이미지처럼) -->
-        <div class="treatBar">
+        <!-- 하단 바 -->
+        <div class="treatBar" aria-label="진료 소개 슬라이드 컨트롤">
           <div class="treatProgress" aria-hidden="true">
             <span class="treatProgress__fill"></span>
           </div>
 
-          <div class="treatCount">
+          <div class="treatCount" aria-label="슬라이드 번호">
             <span class="treatCount__current">1</span>
             <span class="treatCount__slash">/</span>
             <span class="treatCount__total">8</span>
@@ -741,24 +835,25 @@
         </div>
       </div>
 
-      <!-- RIGHT: 미리보기 썸네일 3장 -->
-      <aside class="treatThumbs">
+      <!-- RIGHT: 썸네일 -->
+      <aside class="treatThumbs" aria-label="진료 미리보기">
         <div class="swiper treatThumbSwiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="./img/treat-01.png" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-02.png" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-03.png" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-04.png" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-05.png" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-06.png" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-07.png" alt=""></div>
-            <div class="swiper-slide"><img src="./img/treat-08.png" alt=""></div>
+            <div class="swiper-slide"><img src="./img/treat-01.png" alt="치주치료 썸네일"></div>
+            <div class="swiper-slide"><img src="./img/treat-02.png" alt="임플란트 썸네일"></div>
+            <div class="swiper-slide"><img src="./img/treat-03.png" alt="보철치료 썸네일"></div>
+            <div class="swiper-slide"><img src="./img/treat-04.png" alt="심미치료 썸네일"></div>
+            <div class="swiper-slide"><img src="./img/treat-05.png" alt="충치치료 썸네일"></div>
+            <div class="swiper-slide"><img src="./img/treat-06.png" alt="신경치료 썸네일"></div>
+            <div class="swiper-slide"><img src="./img/treat-07.png" alt="교정치료 썸네일"></div>
+            <div class="swiper-slide"><img src="./img/treat-08.png" alt="예방/스케일링 썸네일"></div>
           </div>
         </div>
       </aside>
     </div>
   </div>
 </section>
+
 
 <!-- 7) 장비소개 -->
 
@@ -1025,14 +1120,14 @@
         <ul class="footer__links">
           <li><a href="#" target="_blank">개인정보처리방침</a></li>
           <li><a href="#" target="_blank">이용약관</a></li>
-          <li><a href="#" target="_blank">비급여항목</a></li>
+          <li><a href="#" target="_blank">비급여수가</a></li>
         </ul>
       </div>
 
     </div>
 
     <div class="footer__copy">
-      <small>© Seoul Sion Dental Clinic. All rights reserved.</small>
+      <small>COPYRIGHT © 2026 SEOUL SION DENTAL CLINIC. ALL RIGHT RESERVED.</small>
     </div>
   </div>
 </footer>
