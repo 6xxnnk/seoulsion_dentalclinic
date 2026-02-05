@@ -1465,11 +1465,9 @@ body.is-mnav-open{ overflow: hidden; }
   background: #fff;
   border-radius: 20px;
   padding: 14px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   overflow: hidden;
 }
 
@@ -1526,8 +1524,8 @@ body.is-mnav-open{ overflow: hidden; }
   font-size: 15px;
   line-height: 1.65;
   letter-spacing: -0.02em;
-
-  flex: 1 1 auto;
+  flex: 0 0 auto;        
+  max-height: 140px; 
   overflow-y: auto;
   padding-right: 6px;
 }
@@ -1739,7 +1737,7 @@ body.is-mnav-open{ overflow: hidden; }
     font-size: 18px;
     padding: 9px 14px;
   }
-  .icard__desc{ font-size: 14px; }
+  .icard__desc{ font-size: 14px;  max-height: 96px; }
 }
 
 
