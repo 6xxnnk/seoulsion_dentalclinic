@@ -17,7 +17,7 @@
   // ✅ Thumbs: 데스크탑/태블릿 동일(3장 고정, 스와이프/클릭 가능)
   const thumbs = new Swiper(thumbEl, {
     direction: "horizontal",
-    slidesPerView: 3,
+    slidesPerView: 2,
     spaceBetween: 8,
     watchSlidesProgress: true,
     allowTouchMove: true,
