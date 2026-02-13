@@ -2142,7 +2142,7 @@ body.is-mnav-open{ overflow: hidden; }
 @media (max-width:600px){
   .usp2{ padding: 74px 0 66px; }
  .usp2__title {
-    font-size: 50px;
+
   }
   .usp2Orbit{
     min-height: auto;
